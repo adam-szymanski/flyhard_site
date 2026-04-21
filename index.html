@@ -1,562 +1,371 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeżyk - Dron Obserwacyjny | FlyHard</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeżyk — Dron obserwacyjny | FlyHard</title>
+  <meta name="description" content="Jeżyk — dron obserwacyjny od FlyHard. Długi czas lotu, wysoka odporność na uszkodzenia, łatwa naprawa dzięki częściom drukowanym w 3D.">
+  <meta name="theme-color" content="#0F1B1E">
 
-        :root {
-            --primary: #1a365d;
-            --primary-light: #2c5282;
-            --accent: #ed8936;
-            --text: #2d3748;
-            --text-light: #718096;
-            --bg: #f7fafc;
-            --white: #ffffff;
-        }
+  <meta property="og:title" content="Jeżyk — Dron obserwacyjny | FlyHard">
+  <meta property="og:description" content="Długi czas lotu fixed-wing w cenie multicoptera. Rugged, field-repairable, dual-use.">
+  <meta property="og:image" content="images/top.jpeg">
+  <meta property="og:type" content="website">
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: var(--bg);
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 100vh;
-            min-height: 600px;
-            overflow: hidden;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(26, 54, 93, 0.85) 0%, rgba(44, 82, 130, 0.7) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 5rem;
-            color: var(--white);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: 0.1em;
-        }
-
-        .hero-tagline {
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 600px;
-            margin-bottom: 2rem;
-        }
-
-        .hero-features {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .hero-feature {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .hero-feature strong {
-            display: block;
-            font-size: 2rem;
-            color: var(--accent);
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(26, 54, 93, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Sections */
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            margin: 1rem auto 0;
-            border-radius: 2px;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .about-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .about-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .about-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .about-card h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Specs Section */
-        #parametry {
-            background: var(--white);
-        }
-
-        #parametry section {
-            max-width: 1200px;
-        }
-
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .spec-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 1rem 1.5rem;
-            background: var(--bg);
-            border-radius: 8px;
-            border-left: 4px solid var(--accent);
-        }
-
-        .spec-label {
-            color: var(--text-light);
-        }
-
-        .spec-value {
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        /* Features Section */
-        .features-list {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-        }
-
-        .feature {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 2rem;
-            align-items: center;
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .feature:nth-child(even) {
-            grid-template-columns: 2fr 1fr;
-        }
-
-        .feature:nth-child(even) .feature-content {
-            order: -1;
-        }
-
-        .feature-icon {
-            font-size: 5rem;
-            text-align: center;
-            color: var(--primary);
-        }
-
-        .feature h3 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .feature p {
-            color: var(--text-light);
-            line-height: 1.8;
-        }
-
-        /* Coming Soon Section */
-        .coming-soon {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: var(--white);
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .coming-soon .section-title {
-            color: var(--white);
-        }
-
-        .coming-soon .section-title::after {
-            background: var(--accent);
-        }
-
-        .coming-soon-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .coming-soon-feature {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-
-        .coming-soon-feature h4 {
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            text-align: center;
-            background: var(--white);
-            padding: 5rem 2rem;
-        }
-
-        .contact-email {
-            font-size: 2rem;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .contact-email:hover {
-            color: var(--accent);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: rgba(255, 255, 255, 0.7);
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            .hero-tagline {
-                font-size: 1.2rem;
-            }
-
-            .hero-features {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .feature {
-                grid-template-columns: 1fr !important;
-            }
-
-            .feature:nth-child(even) .feature-content {
-                order: 0;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-    </style>
+  <link rel="stylesheet" href="brand.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <a href="#" class="logo">FlyHard</a>
-        <ul class="nav-links">
-            <li><a href="#o-produkcie">O produkcie</a></li>
-            <li><a href="#parametry">Parametry</a></li>
-            <li><a href="#cechy">Co nas wyróżnia</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
-        </ul>
-    </nav>
 
-    <header class="hero">
-        <img src="images/top.jpeg" alt="Jeżyk w locie" class="hero-image">
-        <div class="hero-overlay">
-            <h1>JEŻYK</h1>
-            <p class="hero-tagline">Niezawodny dron obserwacyjny zaprojektowany z myślą o najtrudniejszych warunkach</p>
-            <div class="hero-features">
-                <div class="hero-feature">
-                    <strong>2-4h</strong>
-                    Czas lotu
-                </div>
-                <div class="hero-feature">
-                    <strong>130 km/h</strong>
-                    Maks. prędkość
-                </div>
-                <div class="hero-feature">
-                    <strong>90 km/h</strong>
-                    Dopuszczalna siła wiatru
-                </div>
-            </div>
+  <nav class="nav" id="nav">
+    <a href="#" class="nav__logo" aria-label="FlyHard">
+      <img src="logo/flyhard_white.svg" alt="FlyHard">
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#o-produkcie">O produkcie</a></li>
+      <li><a href="#parametry">Parametry</a></li>
+      <li><a href="#cechy">Co nas wyróżnia</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <button class="nav__burger" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">Menu</button>
+  </nav>
+
+  <header class="hero">
+    <div class="hero__media">
+      <img src="images/top.jpeg" alt="Jeżyk w locie" class="hero__img">
+    </div>
+    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="hero__veil" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <div class="hero__meta">
+        <span class="hero__meta-rule"></span>
+        <span class="mono">FH / UAV · Jeżyk v1</span>
+      </div>
+
+      <h1 class="hero__title">
+        <span class="hero__title-line"><span class="hero__title-word">Jeżyk.</span></span>
+        <span class="hero__title-line"><span class="hero__title-word">Latać niezawodnie.</span></span>
+      </h1>
+
+      <p class="hero__tagline">
+        Dron obserwacyjny typu fixed-wing zaprojektowany dla najtrudniejszych warunków —
+        długi czas lotu, odporność na zderzenia, części zapasowe drukowane w 3D na miejscu.
+      </p>
+
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <div class="hero__stat-value" data-counter data-value="2-4" data-suffix=" h">0 h</div>
+          <div class="hero__stat-label">Czas lotu</div>
         </div>
-    </header>
-
-    <section id="o-produkcie">
-        <h2 class="section-title">Czym jest Jeżyk?</h2>
-        <div class="about-content">
-            <div class="about-card">
-                <div class="about-icon">🛡️</div>
-                <h3>Wysoka odporność</h3>
-                <p>Zaprojektowany z myślą o trudnych warunkach użytkowania i zderzeniach</p>
-            </div>
-            <div class="about-card">
-                <div class="about-icon">🔧</div>
-                <h3>Łatwość naprawy</h3>
-                <p>Części zapasowe możesz wydrukować na drukarce 3D</p>
-            </div>
-            <div class="about-card">
-                <div class="about-icon">📦</div>
-                <h3>Kompaktowy</h3>
-                <p>Małe rozmiary idealne do transportu w bagażniku samochodu</p>
-            </div>
-            <div class="about-card">
-                <div class="about-icon">🌪️</div>
-                <h3>Każda pogoda</h3>
-                <p>Zdolność lotu nawet w bardzo trudnych warunkach atmosferycznych</p>
-            </div>
-            <div class="about-card">
-                <div class="about-icon">⏱️</div>
-                <h3>Długi lot</h3>
-                <p>Powyżej 2 godzin lotu nawet w złej pogodzie</p>
-            </div>
-            <div class="about-card">
-                <div class="about-icon">✅</div>
-                <h3>Niezawodność</h3>
-                <p>Priorytet na pewność działania zamiast rekordowych osiągów</p>
-            </div>
+        <div class="hero__stat">
+          <div class="hero__stat-value" data-counter data-value="130" data-suffix=" km/h">0</div>
+          <div class="hero__stat-label">Prędkość maks.</div>
         </div>
-    </section>
-
-    <div id="parametry">
-        <section>
-            <h2 class="section-title">Parametry techniczne</h2>
-            <div class="specs-grid">
-                <div class="spec-item">
-                    <span class="spec-label">Masa własna</span>
-                    <span class="spec-value">1.8 kg</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Masa startowa</span>
-                    <span class="spec-value">4.2 kg</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Rozpiętość skrzydeł</span>
-                    <span class="spec-value">1.1 m</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Długość</span>
-                    <span class="spec-value">1 m</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Minimalna prędkość</span>
-                    <span class="spec-value">30 km/h</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Prędkość przelotowa</span>
-                    <span class="spec-value">45 km/h</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Maksymalna prędkość</span>
-                    <span class="spec-value">130 km/h</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Zużycie energii</span>
-                    <span class="spec-value">4A @ 45 km/h</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Typ baterii</span>
-                    <span class="spec-value">6S, XT60</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Sterowanie</span>
-                    <span class="spec-value">ELRS</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Kamera</span>
-                    <span class="spec-value">FPV analogowa</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Łącze wideo</span>
-                    <span class="spec-value">4.9-5.8 GHz, 5W</span>
-                </div>
-            </div>
-            <p style="text-align: center; margin-top: 2rem; color: var(--text-light); font-size: 0.9rem;">
-                * Wszystkie prędkości są podane względem wiatru
-            </p>
-        </section>
+        <div class="hero__stat">
+          <div class="hero__stat-value" data-counter data-value="90" data-suffix=" km/h">0</div>
+          <div class="hero__stat-label">Wiatr dopuszczalny</div>
+        </div>
+      </div>
     </div>
 
-    <section id="cechy">
-        <h2 class="section-title">Co nas wyróżnia</h2>
-        <div class="features-list">
-            <div class="feature">
-                <div class="feature-icon">💪</div>
-                <div class="feature-content">
-                    <h3>Wysoka odporność na uszkodzenia</h3>
-                    <p>Dzięki połączeniu materiałów o bardzo wysokiej odporności na pękanie i rozrywanie oraz nowatorskich rozwiązań konstrukcyjnych, które są w trakcie procesu patentowego, udało się stworzyć drona zdolnego do ponownego lotu nawet po zderzeniu się z ziemią z prędkością 60 km/h.</p>
-                </div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🛠️</div>
-                <div class="feature-content">
-                    <h3>Łatwość naprawy</h3>
-                    <p>Naszym odbiorcom dostarczamy dane niezbędne do stworzenia własnych części zapasowych samolotu przy użyciu drukarki 3D zamiast zmuszać do kosztownego serwisu u producenta. Kupując Jeżyka nabywasz licencję na wytwarzanie części do zakupionego egzemplarza.</p>
-                </div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🔓</div>
-                <div class="feature-content">
-                    <h3>Otwarta architektura</h3>
-                    <p>W Jeżyku postawiliśmy na rozwiązania znane każdemu operatorowi klasycznych quadrocopterów: szeroko dostępne nadajniki VTX do nadawania obrazu. Sercem naszego drona jest Flight Controller wykorzystujący popularny ArduPilot zapewniający dużą elastyczność konfiguracji.</p>
-                </div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">📐</div>
-                <div class="feature-content">
-                    <h3>Małe rozmiary</h3>
-                    <p>Niewielki gabaryt został zaprojektowany z myślą o transporcie w bagażniku samochodu osobowego, bez konieczności długiego przygotowania drona przed lotem.</p>
-                </div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🔋</div>
-                <div class="feature-content">
-                    <h3>Długi czas lotu</h3>
-                    <p>Mimo niewielkich rozmiarów daleko posunięta optymalizacja konstrukcji doprowadziła do małego zapotrzebowania na energię. Na popularnych pakietach baterii o pojemności 20Ah z napięciem 6S nawet niewprawny operator może lecieć od 2 do 4 godzin.</p>
-                </div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🌧️</div>
-                <div class="feature-content">
-                    <h3>Zdolność do lotu w trudnych warunkach</h3>
-                    <p>Dzięki zastosowanemu układowi napędowemu dron może latać nawet przy silnym wietrze. Był testowany przy wietrze dochodzącym do 90 km/h. Dzięki wysokiej wytrzymałości konstrukcji nawet przy tak dużej prędkości wiatru można nim bezpiecznie wylądować.</p>
-                </div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🏠</div>
-                <div class="feature-content">
-                    <h3>Powrót do miejsca startu</h3>
-                    <p>Posiadając łączność można w każdej chwili wydać polecenie powrotu do miejsca startu. Dron samoczynnie wróci do miejsca startu jeśli utraci łączność z kontrolerem. W razie utraty lub zafałszowania łączności GPS pozycja będzie przybliżana z wykorzystaniem nawigacji inercyjnej.</p>
-                </div>
-            </div>
+    <div class="hero__scroll" aria-hidden="true">
+      <span>Przewiń</span>
+      <span class="hero__scroll-line"></span>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- O PRODUKCIE -->
+    <section class="section" id="o-produkcie">
+      <div class="container">
+        <header class="section__head reveal">
+          <div class="section__id">01 · O produkcie</div>
+          <h2 class="section__title">Fixed-wing endurance <em>w cenie multicoptera.</em></h2>
+        </header>
+
+        <div class="about">
+          <div class="about__copy reveal">
+            <p>
+              <strong>Jeżyk</strong> wypełnia lukę pomiędzy kosztownymi, kruchymi dronami typu fixed-wing
+              a multicopterami o krótkim czasie lotu. Został zbudowany tak, aby codzienne misje
+              obserwacyjne prowadziły jednostki mundurowe, służby ratunkowe i inspektorzy
+              infrastruktury — bez miesięcznego serwisu po każdym twardym lądowaniu.
+            </p>
+            <p>
+              Konstrukcja drukowana w 3D, wzmocniona w miejscach kluczowych dla wytrzymałości.
+              Układ napędowy, kontroler lotu i łącze wideo — rozwiązania otwarte i powszechnie
+              znane operatorom klasycznych quadrocopterów.
+            </p>
+            <p>
+              Priorytet nie jest rekordem osiągów. Priorytetem jest <strong>pewność działania</strong>
+              w warunkach polowych.
+            </p>
+          </div>
+
+          <ol class="capabilities">
+            <li class="capability reveal" style="--i:0">
+              <span class="capability__num">01</span>
+              <div class="capability__body">
+                <h3>Wysoka odporność</h3>
+                <p>Zaprojektowany z myślą o trudnych warunkach użytkowania i zderzeniach.</p>
+              </div>
+            </li>
+            <li class="capability reveal" style="--i:1">
+              <span class="capability__num">02</span>
+              <div class="capability__body">
+                <h3>Łatwość naprawy</h3>
+                <p>Części zapasowe drukowane na miejscu, licencja wliczona w cenę.</p>
+              </div>
+            </li>
+            <li class="capability reveal" style="--i:2">
+              <span class="capability__num">03</span>
+              <div class="capability__body">
+                <h3>Kompaktowe wymiary</h3>
+                <p>Mieści się w bagażniku samochodu osobowego. Start bez długich przygotowań.</p>
+              </div>
+            </li>
+            <li class="capability reveal" style="--i:3">
+              <span class="capability__num">04</span>
+              <div class="capability__body">
+                <h3>Każda pogoda</h3>
+                <p>Testowany przy wietrze do 90 km/h. Bezpieczne lądowanie w trudnych warunkach.</p>
+              </div>
+            </li>
+            <li class="capability reveal" style="--i:4">
+              <span class="capability__num">05</span>
+              <div class="capability__body">
+                <h3>Długi czas lotu</h3>
+                <p>Dwie do czterech godzin na standardowych pakietach 6S / 20 Ah.</p>
+              </div>
+            </li>
+            <li class="capability reveal" style="--i:5">
+              <span class="capability__num">06</span>
+              <div class="capability__body">
+                <h3>Niezawodność przed osiągami</h3>
+                <p>Pewność działania w warunkach polowych wyżej niż rekordy katalogowe.</p>
+              </div>
+            </li>
+          </ol>
         </div>
+      </div>
     </section>
 
-    <section id="kontakt" class="contact">
-        <h2 class="section-title">Kontakt</h2>
-        <p style="margin-bottom: 2rem; color: var(--text-light);">Zainteresowany? Skontaktuj się z nami</p>
-        <a href="mailto:adam@flyhard.pl" class="contact-email">adam@flyhard.pl</a>
+    <!-- PARAMETRY -->
+    <section class="section section--ink" id="parametry">
+      <div class="container">
+        <header class="section__head reveal">
+          <div class="section__id">02 · Parametry</div>
+          <h2 class="section__title">Dane techniczne.</h2>
+        </header>
+
+        <div class="specs reveal">
+          <div class="specs__group">
+            <div class="specs__group-title">Masa &amp; wymiary</div>
+            <div class="specs__row"><span class="specs__label">Masa własna</span><span class="specs__value">1.8 kg</span></div>
+            <div class="specs__row"><span class="specs__label">Masa startowa</span><span class="specs__value">4.2 kg</span></div>
+            <div class="specs__row"><span class="specs__label">Rozpiętość skrzydeł</span><span class="specs__value">1.1 m</span></div>
+            <div class="specs__row"><span class="specs__label">Długość kadłuba</span><span class="specs__value">1.0 m</span></div>
+          </div>
+
+          <div class="specs__group">
+            <div class="specs__group-title">Osiągi</div>
+            <div class="specs__row"><span class="specs__label">Prędkość minimalna</span><span class="specs__value">30 km/h</span></div>
+            <div class="specs__row"><span class="specs__label">Prędkość przelotowa</span><span class="specs__value">45 km/h</span></div>
+            <div class="specs__row"><span class="specs__label">Prędkość maksymalna</span><span class="specs__value">130 km/h</span></div>
+            <div class="specs__row"><span class="specs__label">Wiatr dopuszczalny</span><span class="specs__value">90 km/h</span></div>
+          </div>
+
+          <div class="specs__group">
+            <div class="specs__group-title">Zasilanie</div>
+            <div class="specs__row"><span class="specs__label">Zużycie energii</span><span class="specs__value">4 A @ 45 km/h</span></div>
+            <div class="specs__row"><span class="specs__label">Typ baterii</span><span class="specs__value">6S, XT60</span></div>
+            <div class="specs__row"><span class="specs__label">Typowa pojemność</span><span class="specs__value">20 Ah</span></div>
+            <div class="specs__row"><span class="specs__label">Czas lotu</span><span class="specs__value">2–4 h</span></div>
+          </div>
+
+          <div class="specs__group">
+            <div class="specs__group-title">Elektronika</div>
+            <div class="specs__row"><span class="specs__label">Sterowanie</span><span class="specs__value">ELRS</span></div>
+            <div class="specs__row"><span class="specs__label">Flight controller</span><span class="specs__value">ArduPilot</span></div>
+            <div class="specs__row"><span class="specs__label">Kamera</span><span class="specs__value">FPV analogowa</span></div>
+            <div class="specs__row"><span class="specs__label">Łącze wideo</span><span class="specs__value">4.9–5.8 GHz · 5 W</span></div>
+          </div>
+
+          <div class="specs__note">* Wszystkie prędkości podano względem masy powietrza.</div>
+        </div>
+      </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 FlyHard. Wszelkie prawa zastrzeżone.</p>
-        <p style="margin-top: 1rem; font-size: 0.85rem;">
-            FLYHARD SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ<br>
-            ul. Henryka Sienkiewicza 36/5, 26-600 Radom, Polska<br>
-            NIP: 9482656323
-        </p>
-    </footer>
+    <!-- CECHY -->
+    <section class="section" id="cechy">
+      <div class="container">
+        <header class="section__head reveal">
+          <div class="section__id">03 · Co nas wyróżnia</div>
+          <h2 class="section__title">Siedem decyzji projektowych.</h2>
+        </header>
+
+        <div class="features">
+
+          <article class="feature reveal">
+            <div class="feature__media">
+              <img src="images/jezyk-pavement.png" alt="Jeżyk na polu startowym">
+            </div>
+            <div class="feature__content">
+              <div class="feature__id">F / 01 · Odporność</div>
+              <h3 class="feature__title">Powrót do powietrza po twardym lądowaniu.</h3>
+              <p class="feature__body">
+                Połączenie materiałów o wysokiej odporności na pękanie i rozrywanie oraz nowatorskich
+                rozwiązań konstrukcyjnych (w trakcie procesu patentowego) pozwoliło stworzyć drona
+                zdolnego do ponownego lotu po zderzeniu z ziemią z prędkością 60 km/h.
+              </p>
+            </div>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature__media">
+              <img src="images/field-repair-table.png" alt="Naprawa Jeżyka w warunkach polowych">
+            </div>
+            <div class="feature__content">
+              <div class="feature__id">F / 02 · Naprawa</div>
+              <h3 class="feature__title">Drukuj części. Nie odsyłaj drona do serwisu.</h3>
+              <p class="feature__body">
+                Odbiorcom dostarczamy dane niezbędne do wytwarzania własnych części zapasowych
+                drukarką 3D. Zakup Jeżyka to licencja na wytwarzanie części do zakupionego egzemplarza —
+                bez kosztownego serwisu u producenta.
+              </p>
+            </div>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature__media">
+              <img src="images/jezyk-hero-wood.png" alt="Jeżyk — widok studyjny">
+            </div>
+            <div class="feature__content">
+              <div class="feature__id">F / 03 · Otwarta architektura</div>
+              <h3 class="feature__title">Komponenty znane każdemu operatorowi FPV.</h3>
+              <p class="feature__body">
+                Szeroko dostępne nadajniki VTX do przesyłu obrazu. Sercem drona jest Flight Controller
+                z popularnym ArduPilotem — duża elastyczność konfiguracji, brak vendor lock-in.
+              </p>
+            </div>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature__media">
+              <img src="images/soldiers-van-snow.png" alt="Rozłożenie Jeżyka w terenie">
+            </div>
+            <div class="feature__content">
+              <div class="feature__id">F / 04 · Rozmiar</div>
+              <h3 class="feature__title">Bagażnik samochodu. Żadnych dedykowanych trailerów.</h3>
+              <p class="feature__body">
+                Niewielki gabaryt zaprojektowany z myślą o transporcie w bagażniku samochodu osobowego,
+                bez konieczności długiego przygotowania drona przed lotem.
+              </p>
+            </div>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature__media">
+              <img src="images/top.jpeg" alt="Jeżyk w locie — długa misja">
+            </div>
+            <div class="feature__content">
+              <div class="feature__id">F / 05 · Endurance</div>
+              <h3 class="feature__title">Dwie do czterech godzin w powietrzu.</h3>
+              <p class="feature__body">
+                Mimo niewielkich rozmiarów daleko posunięta optymalizacja konstrukcji doprowadziła
+                do małego zapotrzebowania na energię. Na popularnych pakietach 20 Ah / 6S nawet
+                niewprawny operator leci od 2 do 4 godzin.
+              </p>
+            </div>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature__media">
+              <img src="images/jezyk-soldier-snow.png" alt="Jeżyk w warunkach zimowych">
+            </div>
+            <div class="feature__content">
+              <div class="feature__id">F / 06 · Wiatr</div>
+              <h3 class="feature__title">Lot przy wietrze do 90 km/h.</h3>
+              <p class="feature__body">
+                Zastosowany układ napędowy pozwala latać nawet przy silnym wietrze. Konstrukcja
+                była testowana do 90 km/h — przy tej prędkości wiatru można nim bezpiecznie wylądować.
+              </p>
+            </div>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature__media">
+              <img src="images/jezyk-pavement.png" alt="Jeżyk gotowy do misji">
+            </div>
+            <div class="feature__content">
+              <div class="feature__id">F / 07 · Fail-safe</div>
+              <h3 class="feature__title">Powrót do punktu startu w każdym scenariuszu.</h3>
+              <p class="feature__body">
+                Operator w każdej chwili wydaje polecenie powrotu. Przy utracie łączności dron
+                samoczynnie wraca do miejsca startu. W razie utraty lub zafałszowania sygnału GPS
+                pozycja jest przybliżana nawigacją inercyjną.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section class="section section--ink" id="galeria">
+      <div class="container">
+        <header class="section__head reveal">
+          <div class="section__id">04 · Galeria</div>
+          <h2 class="section__title">Jeżyk w terenie.</h2>
+        </header>
+
+        <div class="gallery reveal">
+          <div class="gallery__item"><img src="images/jezyk-hero-wood.png" alt="Jeżyk — widok główny"></div>
+          <div class="gallery__item"><img src="images/jezyk-soldier-snow.png" alt="Misja w śniegu"></div>
+          <div class="gallery__item"><img src="images/field-repair-table.png" alt="Naprawa polowa"></div>
+          <div class="gallery__item"><img src="images/soldiers-van-snow.png" alt="Rozłożenie z pojazdu"></div>
+          <div class="gallery__item"><img src="images/jezyk-pavement.png" alt="Przed startem"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section class="contact" id="kontakt">
+      <div class="container">
+        <div class="contact__inner">
+          <div class="section__id">05 · Kontakt</div>
+          <div class="contact__body">
+            <h2>Zainteresowany? Skontaktuj się.</h2>
+            <a href="mailto:adam@flyhard.pl" class="contact__email">
+              adam@flyhard.pl
+              <span class="contact__email-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <dl class="contact__meta">
+              <div class="contact__meta-row"><dt>Spółka</dt><dd>FLYHARD sp. z o.o.</dd></div>
+              <div class="contact__meta-row"><dt>Adres</dt><dd>ul. Henryka Sienkiewicza 36/5, 26-600 Radom</dd></div>
+              <div class="contact__meta-row"><dt>NIP</dt><dd>948 265 63 23</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span>© <span id="year">2026</span> FlyHard sp. z o.o.</span>
+      <span>Radom · Polska</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>

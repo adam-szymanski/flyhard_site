@@ -1,0 +1,75 @@
+/* ============================================================
+   FlyHard Design System — Core tokens (self-contained)
+   Derived from: FlyHard Design System/colors_and_type.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --fh-aqua:          #1FB8AD;
+  --fh-aqua-hi:       #3DD3C7;
+  --fh-aqua-lo:       #127A72;
+  --fh-aqua-dim:      rgba(31, 184, 173, 0.12);
+
+  --fh-ink:           #0F1B1E;
+  --fh-ink-2:         #162428;
+  --fh-ink-3:         #1F2F33;
+  --fh-ink-4:         #2A3B40;
+
+  --fh-bone:          #F4F1EB;
+  --fh-bone-2:        #E8E3D8;
+  --fh-bone-3:        #D7D1C3;
+
+  --fh-fg-on-ink:     #F4F1EB;
+  --fh-fg-on-ink-2:   rgba(244, 241, 235, 0.72);
+  --fh-fg-on-ink-3:   rgba(244, 241, 235, 0.48);
+  --fh-fg-on-bone:    #0F1B1E;
+  --fh-fg-on-bone-2:  rgba(15, 27, 30, 0.66);
+  --fh-fg-on-bone-3:  rgba(15, 27, 30, 0.44);
+
+  --fh-font-display:  'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --fh-font-body:     'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --fh-font-mono:     'IBM Plex Mono', 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  --fh-t-hero:        clamp(56px, 9vw, 128px);
+  --fh-t-h1:          clamp(40px, 4.2vw, 64px);
+  --fh-t-h2:          clamp(28px, 2.8vw, 40px);
+  --fh-t-h3:          20px;
+  --fh-t-lead:        clamp(17px, 1.4vw, 20px);
+  --fh-t-body:        15px;
+  --fh-t-small:       13px;
+  --fh-t-micro:       11px;
+  --fh-t-mono:        13px;
+  --fh-t-mono-sm:     11px;
+
+  --fh-track-tight:   -0.02em;
+  --fh-track-normal:   0;
+  --fh-track-wide:     0.14em;
+  --fh-track-mono:     0.02em;
+
+  --fh-lh-tight:      1.02;
+  --fh-lh-snug:       1.2;
+  --fh-lh-body:       1.5;
+  --fh-lh-loose:      1.65;
+
+  --fh-s-1:   4px;
+  --fh-s-2:   8px;
+  --fh-s-3:   12px;
+  --fh-s-4:   16px;
+  --fh-s-5:   24px;
+  --fh-s-6:   32px;
+  --fh-s-7:   48px;
+  --fh-s-8:   64px;
+  --fh-s-9:   96px;
+  --fh-s-10: 128px;
+
+  --fh-r-1:    2px;
+  --fh-r-2:    4px;
+  --fh-r-3:    8px;
+
+  --fh-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --fh-t-fast: 120ms;
+  --fh-t-med:  220ms;
+  --fh-t-slow: 420ms;
+  --fh-t-xslow: 900ms;
+}
