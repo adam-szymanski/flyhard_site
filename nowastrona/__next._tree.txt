@@ -1,2 +1,2 @@
-:HL["/nowastrona/_next/static/chunks/0egfueep734iv.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}},"staleTime":300,"buildId":"eXHRyjQ5MVRMCeoiVQyfs"}
+:HL["/nowastrona/_next/static/chunks/065tt7xr-hry8.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}},"staleTime":300,"buildId":"zx-HNPm60ZP_eYXA12CJ5"}
